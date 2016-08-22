@@ -40,7 +40,7 @@ public class SearchResourceRepository implements SearchResource {
     private ArrayList<SearchResultId> toSearchResultIds(SearchResult hit) {
         final ArrayList<SearchResultId> resultIds = new ArrayList<SearchResultId>(hit.getResults().size());
         for (ProteinHit p : hit.getResults()) {
-            resultIds.add(new SearchResultId(p.getId().toString(), p.getHighlighted()));
+            resultIds.add(new SearchResultId(p.getId().toString(), p.getName(), p.getAnnotation(), p.getHighlighted()));
         }
         return resultIds;
     }

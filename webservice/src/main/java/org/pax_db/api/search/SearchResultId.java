@@ -15,6 +15,12 @@ public class SearchResultId implements Serializable {
     @XmlAttribute(name = "id", required = true)
     protected String proteinId;
 
+    @XmlAttribute(name = "name")
+    protected String proteinName;
+
+    @XmlElement(name = "annotation")
+    protected String proteinAnnotation;
+
     @XmlElement(name = "highlighted")
     protected String highlighted;
 
@@ -25,8 +31,10 @@ public class SearchResultId implements Serializable {
 
     }
 
-    public SearchResultId(String proteinId, String highlighted) {
+    public SearchResultId(String proteinId, String proteinName, String annotation, String highlighted) {
         this.proteinId = proteinId;
+        this.proteinName = proteinName;
+        this.proteinAnnotation = annotation;
         this.highlighted = highlighted;
     }
 
@@ -36,6 +44,22 @@ public class SearchResultId implements Serializable {
 
     public void setProteinId(String proteinId) {
         this.proteinId = proteinId;
+    }
+
+    public String getProteinName() {
+        return proteinName;
+    }
+
+    public void setProteinName(String proteinName) {
+        this.proteinName = proteinName;
+    }
+
+    public String getProteinAnnotation() {
+        return proteinAnnotation;
+    }
+
+    public void setProteinAnnotation(String proteinAnnotation) {
+        this.proteinAnnotation = proteinAnnotation;
     }
 
     public String getHighlighted() {

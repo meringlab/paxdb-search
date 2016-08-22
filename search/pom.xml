@@ -18,6 +18,7 @@
 
     <profiles>
         <profile>
+            <!--to run: mvn -P build-index package -->
             <id>build-index</id>
             <activation>
                 <activeByDefault>false</activeByDefault>

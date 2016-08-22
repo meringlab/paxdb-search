@@ -31,14 +31,14 @@ public class XmlMarshallingTest {
 
         ArrayList<Hits> results = new ArrayList<Hits>();
         ArrayList<SearchResultId> hits = new ArrayList<SearchResultId>();
-        hits.add(new SearchResultId("4235", "CDC42"));
-        hits.add(new SearchResultId("7777", "CDC3"));
+        hits.add(new SearchResultId("4235", "CDC42", "CDC42 annotation", ""));
+        hits.add(new SearchResultId("7777", "CDC3", "CDC3 annotation", ""));
         results.add(new Hits("cdc", 4932L, hits, 2, 1, 10));
 
         hits = new ArrayList<SearchResultId>();
-        hits.add(new SearchResultId("111", "ALD2"));
-        hits.add(new SearchResultId("222", "POP7"));
-        hits.add(new SearchResultId("333", "RPM2"));
+        hits.add(new SearchResultId("111", "ALD2", "ALD2 annotation", ""));
+        hits.add(new SearchResultId("222", "POP7", "POP7 annotation", ""));
+        hits.add(new SearchResultId("333", "RPM2", "RPM2 annotation", ""));
         results.add(new Hits("p53", 4932L, hits, 3, 1, 10));
         searchResponse = new SearchResponse(results, "20ms");
     }

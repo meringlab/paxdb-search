@@ -7,6 +7,8 @@ package org.string_db.search;
  */
 public class ProteinHit {
     private Long id;
+    private String name;
+    private String annotation;
     private Float score;
     private String highlighted;
 
@@ -15,6 +17,14 @@ public class ProteinHit {
 
     public ProteinHit(Long proteinId, Float score, String highlighted) {
         this.id = proteinId;
+        this.score = score;
+        this.highlighted = highlighted;
+    }
+
+    public ProteinHit(Long id, String name, String annotation, Float score, String highlighted) {
+        this.id = id;
+        this.name = name;
+        this.annotation = annotation;
         this.score = score;
         this.highlighted = highlighted;
     }
@@ -43,6 +53,22 @@ public class ProteinHit {
         this.highlighted = highlighted;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAnnotation() {
+        return annotation;
+    }
+
+    public void setAnnotation(String annotation) {
+        this.annotation = annotation;
+    }
+
     @Override
     public String toString() {
         return "ProteinHit{" +
@@ -59,18 +85,12 @@ public class ProteinHit {
 
         ProteinHit that = (ProteinHit) o;
 
-        if (highlighted != null ? !highlighted.equals(that.highlighted) : that.highlighted != null) return false;
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (score != null ? !score.equals(that.score) : that.score != null) return false;
+        return getId().equals(that.getId());
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (score != null ? score.hashCode() : 0);
-        result = 31 * result + (highlighted != null ? highlighted.hashCode() : 0);
-        return result;
+        return getId().hashCode();
     }
 }
