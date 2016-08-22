@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<project
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>api-search</artifactId>
+        <groupId>org.pax-db</groupId>
+        <version>4.0.0</version>
+    </parent>
+    <groupId>org.pax-db.api</groupId>
+    <artifactId>search-webservice</artifactId>
+    <version>4.0.0</version>
+    <packaging>jar</packaging>
+    <name>paxdb API search-webservice</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.pax-db.api</groupId>
+            <artifactId>search</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>jsr311-api</artifactId>
+            <version>1.1.1</version>
+            <type>jar</type>
+        </dependency>
+        <!-- GWT needs sources to process jaxb annotations  -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.1</version>
+            <type>jar</type>
+            <classifier>sources</classifier>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <!-- paxdb-web's needs sources for gwt compilation:
+           http://www.bitsbythepound.com/gwt-module-using-maven-128.html -->
+        <resources>
+            <resource>
+                <directory>src/main/java/</directory>
+                <includes>
+                    <include>org/**</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+</project>

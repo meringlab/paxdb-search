@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <parent>
+        <artifactId>api-search</artifactId>
+        <groupId>org.pax-db</groupId>
+        <version>4.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.pax-db</groupId>
+    <artifactId>string-db-jdbc</artifactId>
+    <name>string-db-jdbc</name>
+    <version>4.0.0</version>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.3-1102-jdbc4</version>
+        </dependency>
+    </dependencies>
+</project>

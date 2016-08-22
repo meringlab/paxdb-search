@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <parent>
+        <artifactId>api-search</artifactId>
+        <groupId>org.pax-db</groupId>
+        <version>4.0.0</version>
+    </parent>
+    <version>4.0.0</version>
+    <groupId>org.pax-db.api</groupId>
+    <artifactId>search</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>jar</packaging>
+    <url>http://string-db.org</url>
+    <properties>
+        <!--TODO update to 4.10.0-->
+        <lucene.version>3.6.2</lucene.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>build-index</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <stringdb.index>/srv/paxdb/</stringdb.index>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>build_index</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <mainClass>org.string_db.index.ProteinIndexer</mainClass>
+                            <!--
+                            Note: The java goal doesn't spawn a new process. Any VM specific option that you want to pass to the executed class must be passed to the Maven VM using the MAVEN_OPTS environment variable. E.g.
+            MAVEN_OPTS=-Xmx1024m
+            -->
+                            <!--<arguments>-->
+                            <!--<argument>-X</argument>-->
+                            <!--<argument>mx1023M</argument>-->
+                            <!--</arguments>-->
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <build>
+        <finalName>search</finalName>
+    </build>
+    <dependencies>
+        <dependency>
+            <!--TODO move to org.string-db.jdbc v1-->
+            <groupId>org.pax-db</groupId>
+            <artifactId>string-db-jdbc</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>${lucene.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-highlighter</artifactId>
+            <version>${lucene.version}</version>
+            <type>jar</type>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.apache.lucene</groupId>-->
+        <!--<artifactId>lucene-fast-vector-highlighter</artifactId>-->
+        <!--<version>${lucene.version}</version>-->
+        <!--<type>jar</type>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.4</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+</project>
