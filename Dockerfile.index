@@ -1,0 +1,15 @@
+FROM        meringlab/oracle-java8
+MAINTAINER  Milan Simonovic <milan.simonovic@imls.uzh.ch>
+
+# maven installed? 
+
+# should I create data volume?
+VOLUME ["/data"]
+
+ADD . /srv/paxdb/
+ADD paxdb.properties /opt/paxdb/v4.0/paxdb.properties
+CWD /srv/paxdb/
+
+RUN mvn  -P build-index install
+
+CMD ["mvn", "-P", "build-index","install"]
