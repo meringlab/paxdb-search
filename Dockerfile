@@ -1,14 +1,24 @@
+# sudo docker build -t paxdb/search .
+# sudo docker run -d -P --restart=always --name paxdb-search -v /tmp/lucene_index_4:/data/lucene_index_4 paxdb/search
+#
+
 FROM        meringlab/oracle-java8
 MAINTAINER  Milan Simonovic <milan.simonovic@imls.uzh.ch>
 
 # TODO create user
 
+RUN apt-get update && apt-get -y install maven
+
 ADD . /srv/paxdb/
 ADD paxdb.properties /opt/paxdb/v4.0/paxdb.properties
 
-CWD /srv/paxdb/webservice-war
+WORKDIR /srv/paxdb
+
+RUN mvn	install
 
 EXPOSE 9095
+
+WORKDIR /srv/paxdb/webservice-war
 
 # Command to run
 #ENTRYPOINT ["/scripts/run.sh"]
