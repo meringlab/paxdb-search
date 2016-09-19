@@ -12,7 +12,7 @@
     <artifactId>search-webservice-war</artifactId>
     <version>4.0.0</version>
     <packaging>war</packaging>
-    <name>paxdb search API war package</name>
+    <!--<name>paxdb search API war package</name>-->
 
     <properties>
         <jetty.version>9.2.2.v20140723</jetty.version>
@@ -40,7 +40,6 @@
 
     <dependencies>
         <dependency>
-            <!--fix see http://stackoverflow.com/a/19708873/306042-->
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>jaxrs-api</artifactId>
             <version>${resteasy.version}</version>

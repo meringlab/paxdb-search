@@ -12,7 +12,7 @@
     <artifactId>search-webservice</artifactId>
     <version>4.0.0</version>
     <packaging>jar</packaging>
-    <name>paxdb API search-webservice</name>
+    <!--<name>paxdb API search-webservice</name>-->
 
     <dependencies>
         <dependency>
@@ -20,11 +20,18 @@
             <artifactId>search</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!--bugfix: jsr311 and resteasy have two different Response classes
+         see http://stackoverflow.com/a/19708873/306042-->
+        <!--<dependency>-->
+            <!--<groupId>javax.ws.rs</groupId>-->
+            <!--<artifactId>jsr311-api</artifactId>-->
+            <!--<version>1.1.1</version>-->
+            <!--<type>jar</type>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>jsr311-api</artifactId>
-            <version>1.1.1</version>
-            <type>jar</type>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>jaxrs-api</artifactId>
+            <version>${resteasy.version}</version>
         </dependency>
         <!-- GWT needs sources to process jaxb annotations  -->
         <dependency>
