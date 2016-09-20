@@ -119,7 +119,8 @@ public class ProteinSearcher implements Searcher {
                             document.get(Fields.NAME.toString()),
                             document.get(Fields.ANNOTATION.toString()),
                             hits[i].score,
-                            highlightedSnippet));
+                            highlightedSnippet,
+                            document.get(Fields.SPECIES.toString())));
                 }
 //                    if (log.isDebugEnabled()) {
 //                        log.debug("'" + protein + "' hits: " + candidates);

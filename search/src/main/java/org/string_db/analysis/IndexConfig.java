@@ -117,7 +117,7 @@ public class IndexConfig {
 
         Map<Fields, Field.Store> store = new HashMap();
         store.put(Fields.ID, Field.Store.YES);
-        store.put(Fields.SPECIES, Field.Store.NO);
+        store.put(Fields.SPECIES, Field.Store.YES);
         store.put(Fields.NAME, Field.Store.YES);
         store.put(Fields.PARTIAL_MATCH_NAME, Field.Store.NO);
         store.put(Fields.OTHER_NAMES, Field.Store.NO);

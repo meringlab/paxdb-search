@@ -11,6 +11,7 @@ public class ProteinHit {
     private String annotation;
     private Float score;
     private String highlighted;
+    private String speciesId;
 
     public ProteinHit() {
     }
@@ -27,6 +28,15 @@ public class ProteinHit {
         this.annotation = annotation;
         this.score = score;
         this.highlighted = highlighted;
+    }
+
+    public ProteinHit(Long id, String name, String annotation, Float score, String highlighted, String speciesId) {
+        this.id = id;
+        this.name = name;
+        this.annotation = annotation;
+        this.score = score;
+        this.highlighted = highlighted;
+        this.speciesId = speciesId;
     }
 
     public Long getId() {
@@ -67,6 +77,10 @@ public class ProteinHit {
 
     public void setAnnotation(String annotation) {
         this.annotation = annotation;
+    }
+
+    public String getSpeciesId() {
+        return speciesId;
     }
 
     @Override

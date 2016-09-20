@@ -18,11 +18,15 @@ public class SearchResultId implements Serializable {
     @XmlAttribute(name = "name")
     protected String proteinName;
 
+    @XmlAttribute(name = "speciesId")
+    private String speciesId;
+
     @XmlElement(name = "annotation")
     protected String proteinAnnotation;
 
     @XmlElement(name = "highlighted")
     protected String highlighted;
+
 
     /**
      * GWT requires a no-arg constructor
@@ -36,6 +40,14 @@ public class SearchResultId implements Serializable {
         this.proteinName = proteinName;
         this.proteinAnnotation = annotation;
         this.highlighted = highlighted;
+    }
+
+    public SearchResultId(String proteinId, String proteinName, String proteinAnnotation, String highlighted, String speciesId) {
+        this.proteinId = proteinId;
+        this.proteinName = proteinName;
+        this.proteinAnnotation = proteinAnnotation;
+        this.highlighted = highlighted;
+        this.speciesId = speciesId;
     }
 
     public String getProteinId() {
@@ -68,6 +80,14 @@ public class SearchResultId implements Serializable {
 
     public void setHighlighted(String highlighted) {
         this.highlighted = highlighted;
+    }
+
+    public String getSpeciesId() {
+        return speciesId;
+    }
+
+    public void setSpeciesId(String speciesId) {
+        this.speciesId = speciesId;
     }
 
     @Override
