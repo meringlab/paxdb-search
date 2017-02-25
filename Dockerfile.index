@@ -1,7 +1,7 @@
 FROM        meringlab/java8
 MAINTAINER  Milan Simonovic <milan.simonovic@imls.uzh.ch>
 
-# maven installed? 
+RUN apt-get update && apt-get -y install maven
 
 # should I create data volume?
 VOLUME ["/data"]
