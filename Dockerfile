@@ -2,7 +2,7 @@
 # sudo docker run -d -P --restart=always --name paxdb-search -v /tmp/lucene_index_4:/data/lucene_index_4 paxdb/search
 #
 
-FROM        meringlab/oracle-java8
+FROM        meringlab/java8
 MAINTAINER  Milan Simonovic <milan.simonovic@imls.uzh.ch>
 
 # TODO create user

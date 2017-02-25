@@ -1,4 +1,4 @@
-FROM        meringlab/oracle-java8
+FROM        meringlab/java8
 MAINTAINER  Milan Simonovic <milan.simonovic@imls.uzh.ch>
 
 # maven installed? 
