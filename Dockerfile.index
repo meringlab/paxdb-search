@@ -8,7 +8,7 @@ VOLUME ["/data"]
 
 ADD . /srv/paxdb/
 ADD paxdb.properties /opt/paxdb/v4.0/paxdb.properties
-CWD /srv/paxdb/
+WORKDIR /srv/paxdb/
 
 RUN mvn  -P build-index install
 
