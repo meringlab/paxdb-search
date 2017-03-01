@@ -8,9 +8,11 @@ MAINTAINER  Milan Simonovic <milan.simonovic@imls.uzh.ch>
 ENV SERVICE_TAGS "paxdb,api"
 ENV SERVICE_NAME paxdb_search_api_v4.0
 
-
 RUN apt-get update && apt-get -y install maven
 
+RUN useradd -ms /bin/bash paxdb
+# RUN chown -R paxdb /var/www/paxdb
+USER paxdb
 
 ADD . /srv/paxdb/
 ADD paxdb.properties hibernate.properties /opt/paxdb/v4.0/
