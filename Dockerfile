@@ -12,11 +12,9 @@ RUN apt-get update && apt-get -y install maven
 
 RUN useradd -ms /bin/bash paxdb
 # RUN chown -R paxdb /var/www/paxdb
-USER paxdb
 
 ADD . /srv/paxdb/
 ADD paxdb.properties hibernate.properties /opt/paxdb/v4.0/
-
 WORKDIR /srv/paxdb
 
 RUN mvn	install
@@ -26,6 +24,8 @@ EXPOSE 9095
 WORKDIR /srv/paxdb/webservice-war
 
 VOLUME ["/data"]
+RUN chown -R paxdb /srv/paxdb/ /data/
+USER paxdb
 
 ENTRYPOINT ["/srv/paxdb/run.sh"]
 CMD [""]
