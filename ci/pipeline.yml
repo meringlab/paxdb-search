@@ -1,0 +1,91 @@
+---
+
+# fly -t dev login $IP
+# fly -t dev set-pipeline -p paxdb-search -c ci/pipeline.yml --var "registry-password=secret"
+# fly -t dev unpause-pipeline  -p paxdb-search
+# fly -t dev trigger-job --job paxdb-search/build
+
+resources:
+- name: code
+  type: git
+  source:
+    uri: https://github.com/meringlab/paxdb-search.git
+
+#- name: meringlab-java8
+#  type: docker-image
+#  source:
+#    repository: docker-registry.meringlab.org:5443/meringlab/java8
+#    username: admin
+#    password: {{registry-password}} # should come as a param
+#    tag: latest
+#    #      repository: meringlab/node6
+
+#- name: search-api-indexer-image
+#  type: docker-image
+#  source:
+#    repository: docker-registry.meringlab.org:5443/paxdb/search-index
+#    username: admin
+#    email: paxdb.team@gmail.com
+#    password: {{registry-password}}
+#    tag: 4.0.1
+
+- name: search-api-image
+  type: docker-image
+  source:
+    repository: docker-registry.meringlab.org:5443/paxdb/search
+    username: admin
+    email: paxdb.team@gmail.com
+    password: {{registry-password}}
+    tag: 4.0.1
+
+- name: ubuntu-xenial
+  type: docker-image
+  source:
+    repository: ubuntu
+    tag: "xenial"
+
+jobs:
+- name: build
+  public: true
+#  serial: true
+  plan:
+  - aggregate:
+      - get: code
+        trigger: true
+      - get: ubuntu-xenial
+        params: {save: true}
+#  - task: compile-test-code
+#    config:
+#      platform: linux
+#      image_resource:
+#          type: docker-image
+#          source:
+#            repository: maven
+##            repository: docker-registry.meringlab.org:5443/meringlab/java8
+##            username: admin
+##            password: {{registry-password}} # should come as a param
+#            tag: 3-alpine
+#      inputs:
+#          - name: code
+#      run:
+#          dir: ./code/
+#          path: sh
+#          args:
+#          - -exc
+#          - |
+#            mkdir -p /opt/paxdb/v4.0/ /data
+#            cp paxdb.properties hibernate.properties /opt/paxdb/v4.0/
+#            mvn install
+
+  - put: search-api-image
+    params:
+      build: code/
+      dockerfile: code/Dockerfile
+      load_base: ubuntu-xenial
+
+#  - put: search-api-indexer-image
+#    params:
+#    # see https://github.com/concourse/docker-image-resource#parameters-1 for details
+#      build: code/
+#      dockerfile: code/Dockerfile.index
+#      load_base: ubuntu-xenial
