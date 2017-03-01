@@ -10,7 +10,7 @@ MAINTAINER  Milan Simonovic <milan.simonovic@imls.uzh.ch>
 RUN apt-get update && apt-get -y install maven
 
 ADD . /srv/paxdb/
-ADD paxdb.properties /opt/paxdb/v4.0/paxdb.properties
+ADD paxdb.properties hibernate.properties /opt/paxdb/v4.0/
 
 WORKDIR /srv/paxdb
 
@@ -20,10 +20,18 @@ EXPOSE 9095
 
 WORKDIR /srv/paxdb/webservice-war
 
+VOLUME ["/data"]
+
 # Command to run
 #ENTRYPOINT ["/scripts/run.sh"]
 #CMD [""]
+
+
+# TODO create a script that accepts params and either starts jetty or runs indexer
 CMD ["mvn", "jetty:run-war"]
+# to index run: mvn -P build-index install
+
+
 
 ENV SERVICE_TAGS "paxdb,api"
 ENV SERVICE_NAME paxdb_search_api_v4.0
