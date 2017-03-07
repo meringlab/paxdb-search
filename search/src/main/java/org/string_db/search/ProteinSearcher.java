@@ -134,7 +134,7 @@ public class ProteinSearcher implements Searcher {
             }
             return new SearchResult(query, results, topDocs.totalHits, page, pageSize);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("failed to search for " + query, e);
         }
     }
 
