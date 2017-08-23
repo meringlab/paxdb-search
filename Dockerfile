@@ -9,23 +9,19 @@ ENV SERVICE_TAGS "paxdb,api"
 ENV SERVICE_NAME paxdb_search_api_v4.0
 
 RUN apt-get update && apt-get -y install maven
-
 RUN useradd -ms /bin/bash paxdb
-# RUN chown -R paxdb /var/www/paxdb
+
+EXPOSE 9095
+VOLUME ["/data"]
 
 ADD . /srv/paxdb/
 ADD paxdb.properties hibernate.properties /opt/paxdb/v4.0/
+RUN chown -R paxdb /srv/paxdb/ /data/
 WORKDIR /srv/paxdb
 
-RUN mvn	install
-
-EXPOSE 9095
-
-WORKDIR /srv/paxdb/webservice-war
-
-VOLUME ["/data"]
-RUN chown -R paxdb /srv/paxdb/ /data/
 USER paxdb
+RUN mvn	install
+WORKDIR /srv/paxdb/webservice-war
 
 ENTRYPOINT ["/srv/paxdb/run.sh"]
 CMD [""]
