@@ -6,7 +6,7 @@ FROM        meringlab/java8
 MAINTAINER  Milan Simonovic <milan.simonovic@imls.uzh.ch>
 
 ENV SERVICE_TAGS "paxdb,api"
-ENV SERVICE_NAME paxdb_search_api_v4.0
+ENV SERVICE_NAME paxdb_search_api_v4.1
 
 RUN apt-get update && apt-get -y install maven
 RUN useradd -ms /bin/bash paxdb
@@ -15,7 +15,7 @@ EXPOSE 9095
 VOLUME ["/data"]
 
 ADD . /srv/paxdb/
-ADD paxdb.properties hibernate.properties /opt/paxdb/v4.0/
+ADD paxdb.properties hibernate.properties /opt/paxdb/v4.1/
 RUN chown -R paxdb /srv/paxdb/ /data/
 WORKDIR /srv/paxdb
 

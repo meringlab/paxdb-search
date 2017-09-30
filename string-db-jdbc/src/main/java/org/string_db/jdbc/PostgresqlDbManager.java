@@ -2,16 +2,14 @@ package org.string_db.jdbc;
 
 import org.apache.log4j.Logger;
 
-import java.io.*;
+import java.io.FileInputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 public class PostgresqlDbManager implements DbManager {
     private static final Logger log = Logger.getLogger("org.string_db.jdbc.DbManager");
-    public static final String PAXDB_PROPERTIES = "/opt/paxdb/v4.0/hibernate.properties";
+    public static final String PAXDB_PROPERTIES = "/opt/paxdb/v4.1/hibernate.properties";
 
     private PostgresConnector connector;
 
@@ -57,19 +55,6 @@ public class PostgresqlDbManager implements DbManager {
     @Override
     public ResultSet getCursorBasedResultSet(String query, int fetchSize) throws SQLException {
         return connector.getCursorBasedResultSet(query, fetchSize);
-    }
-
-    private final List<String> readFile(InputStream istream) throws IOException {
-        List<String> lines = new ArrayList<String>();
-        BufferedReader br = new BufferedReader(new InputStreamReader(new DataInputStream(istream)));
-        String strLine;
-        while ((strLine = br.readLine()) != null) {
-            lines.add(strLine.trim());
-        }
-        if (lines.isEmpty()) {
-            throw new IOException("empty file: " + istream);
-        }
-        return lines;
     }
 
     private PostgresConnector loadConnector() throws Exception {

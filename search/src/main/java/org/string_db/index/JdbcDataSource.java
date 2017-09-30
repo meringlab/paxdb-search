@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class JdbcDataSource implements DataSource {
     private static final Logger log = Logger.getLogger(JdbcDataSource.class);
-    public static final String PAXDB_PROPERTIES = "/opt/paxdb/v4.0/paxdb.properties";
+    public static final String PAXDB_PROPERTIES = "/opt/paxdb/v4.1/paxdb.properties";
     private final List<Long> species;
 
     DbManager db;

@@ -6,11 +6,11 @@
     <parent>
         <artifactId>api-search</artifactId>
         <groupId>org.pax-db</groupId>
-        <version>4.0.0</version>
+        <version>4.1.0</version>
     </parent>
     <groupId>org.pax-db.api</groupId>
     <artifactId>search-webservice-war</artifactId>
-    <version>4.0.0</version>
+    <version>4.1.0</version>
     <packaging>war</packaging>
     <!--<name>paxdb search API war package</name>-->
 
