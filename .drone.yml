@@ -1,0 +1,18 @@
+pipeline:
+  build:
+    image: openjdk:8-alpine
+    commands:
+      - mkdir -p /opt/paxdb/v4.1/ /data
+      - cp paxdb.properties hibernate.properties /opt/paxdb/v4.1/
+      - mvn install
+
+#  publish:
+#    image: plugins/docker
+#    repo: docker-registry.meringlab.org:5443/paxdb/search
+#    registry: docker-registry.meringlab.org:5443
+#    auto_tag: true
+#    secrets: [ docker_username, docker_password ]
+
+
+# stable-master pattern
+branches: master
