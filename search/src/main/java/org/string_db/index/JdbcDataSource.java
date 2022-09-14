@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class JdbcDataSource implements DataSource {
     private static final Logger log = Logger.getLogger(JdbcDataSource.class);
-    public static final String PAXDB_PROPERTIES = "/opt/paxdb/v4.1/paxdb.properties";
+    public static final String PAXDB_PROPERTIES = "/opt/paxdb/v5.0/paxdb.properties";
     private final List<Long> species;
 
     DbManager db;
@@ -56,7 +56,7 @@ public class JdbcDataSource implements DataSource {
             List<String> records = new ArrayList<String>();
             final ResultSet proteins = db
                     .executeQuery("SELECT protein_id, protein_external_id, preferred_name, annotation"
-                            + " FROM items.proteins WHERE species_id = " + speciesId);
+                            + " FROM paxdb5_0.proteins WHERE species_id = " + speciesId);
             while (proteins.next()) {
                 records.add(proteins.getString(1) + "\t" + proteins.getString(2) + "\t" + proteins
                         .getString(3) + "\t" + proteins.getString(4));
@@ -74,7 +74,7 @@ public class JdbcDataSource implements DataSource {
         try {
             final ResultSet names;
             names = db.executeQuery("SELECT protein_id, protein_name "
-                    + " FROM items.proteins_names WHERE species_id = " + speciesId);
+                    + " FROM paxdb5_0.proteins_names WHERE species_id = " + speciesId);
             Map<Long, Set<String>> proteinNames = new HashMap<Long, Set<String>>();
             while (names.next()) {
                 final long id = names.getLong(1);

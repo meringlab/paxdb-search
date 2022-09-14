@@ -29,7 +29,7 @@ import java.util.Properties;
  */
 public class IndexConfig {
     private static final Logger log = Logger.getLogger(IndexConfig.class);
-    public static final String PAXDB_PROPS = "/opt/paxdb/v4.1/paxdb.properties";
+    public static final String PAXDB_PROPS = "/opt/paxdb/v5.0/paxdb.properties";
 
     public final Version LUCENE_VERSION = Version.LUCENE_36;
 

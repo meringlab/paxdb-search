@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.pax-db</groupId>
     <artifactId>api-search</artifactId>
     <packaging>pom</packaging>
-    <version>4.1.0</version>
+    <version>5.0.0</version>
     <name>paxdb search api service</name>
     <url>http://pax-db.org</url>
     <organization>
@@ -73,6 +72,7 @@
                 <version>2.16</version>
                 <configuration>
                     <argLine>-Xmx512m</argLine>
+                    <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
         </plugins>
@@ -242,18 +242,6 @@
         </profile>
 
     </profiles>
-
-    <repositories>
-        <repository>
-            <id>jboss</id>
-            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>vmering</id>
-            <name>vmering repository</name>
-            <url>http://imlslnx-titan.uzh.ch/nexus/content/repositories/vmering</url>
-        </repository>
-    </repositories>
 
     <pluginRepositories>
         <pluginRepository>

@@ -3,16 +3,16 @@
     <parent>
         <artifactId>api-search</artifactId>
         <groupId>org.pax-db</groupId>
-        <version>4.1.0</version>
+        <version>5.0.0</version>
     </parent>
-    <version>4.1.0</version>
+    <version>5.0.0</version>
     <groupId>org.pax-db.api</groupId>
     <artifactId>search</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
     <url>http://string-db.org</url>
     <properties>
-        <!--TODO update to 4.10.0-->
+        <!--TODO update to 4.20.0-->
         <lucene.version>3.6.2</lucene.version>
     </properties>
 

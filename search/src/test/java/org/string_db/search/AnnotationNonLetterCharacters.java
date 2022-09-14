@@ -19,7 +19,7 @@ public class AnnotationNonLetterCharacters {
         Set<Character> characters = new HashSet<Character>();
         DbManager dbManager = new PostgresqlDbManager();
         for (Integer species : Arrays.asList(4932, 3702, 7227, 9606, 10090)) {
-            final ResultSet resultSet = dbManager.executeQuery("select annotation from items.proteins where species_id = " + species);
+            final ResultSet resultSet = dbManager.executeQuery("select annotation from paxdb5_0.proteins where species_id = " + species);
             while (resultSet.next()) {
                 final String annotation = resultSet.getString(1);
                 for (int i = 0; i < annotation.length(); i++) {

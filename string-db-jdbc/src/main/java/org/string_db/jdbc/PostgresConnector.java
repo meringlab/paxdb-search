@@ -29,9 +29,7 @@ public class PostgresConnector {
         } catch (ClassNotFoundException e) {
             throw new ExceptionInInitializerError(e);
         }
-        String url = "jdbc:postgresql://" + this.host + "/" + this.database + "?user="
-                + this.username + (this.password != null ? "&password=" + this.password : "");
-        conn = DriverManager.getConnection(url);
+        conn = DriverManager.getConnection("jdbc:postgresql://"+ this.host + "/" + this.database, this.username, this.password);
         statement = conn.createStatement();
     }
 

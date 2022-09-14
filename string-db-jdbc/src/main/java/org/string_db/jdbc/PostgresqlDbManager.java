@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class PostgresqlDbManager implements DbManager {
     private static final Logger log = Logger.getLogger("org.string_db.jdbc.DbManager");
-    public static final String PAXDB_PROPERTIES = "/opt/paxdb/v4.1/hibernate.properties";
+    public static final String PAXDB_PROPERTIES = "/opt/paxdb/v5.0/hibernate.properties";
 
     private PostgresConnector connector;
 
@@ -69,13 +69,13 @@ public class PostgresqlDbManager implements DbManager {
 
         final String username = props.getProperty("hibernate.connection.username");
         final String password = props.getProperty("hibernate.connection.password");
-        log.info("host=" + host + ", db=" + database + ", user=" + username);
+        log.info("host=" + host + ", db=" + database + ", user=" + username + ", password=" + password);
         return new PostgresConnector(host, database, username, password);
     }
 
     public static void main(String[] args) throws SQLException {
         final PostgresqlDbManager m = new PostgresqlDbManager();
-        System.out.println(m.execute("select count(*) from items.species;"));
+        System.out.println(m.execute("select count(*) from paxdb5_0.species;"));
         m.shutdown();
     }
 }

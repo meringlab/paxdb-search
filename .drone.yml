@@ -2,8 +2,8 @@ pipeline:
   build:
     image: openjdk:8-alpine
     commands:
-      - mkdir -p /opt/paxdb/v4.1/ /data
-      - cp paxdb.properties hibernate.properties /opt/paxdb/v4.1/
+      - mkdir -p /opt/paxdb/v5.0/ /data
+      - cp paxdb.properties hibernate.properties /opt/paxdb/v5.0/
       - apk update
       - apk add maven
       - mvn install
