@@ -83,7 +83,7 @@ public class IndexConfig {
      * Index field names.
      */
     public enum Fields {
-        ID, SPECIES, NAME, OTHER_NAMES, ANNOTATION, PARTIAL_MATCH_NAME, PARTIAL_MATCH_OTHER_NAMES, OTHER_NAMES_HIGHLIGHT
+        ID, EXT_ID, SPECIES, NAME, OTHER_NAMES, ANNOTATION, PARTIAL_MATCH_NAME, PARTIAL_MATCH_OTHER_NAMES, OTHER_NAMES_HIGHLIGHT
     }
 
     /**
@@ -117,6 +117,7 @@ public class IndexConfig {
 
         Map<Fields, Field.Store> store = new HashMap();
         store.put(Fields.ID, Field.Store.YES);
+        store.put(Fields.EXT_ID, Field.Store.YES);
         store.put(Fields.SPECIES, Field.Store.YES);
         store.put(Fields.NAME, Field.Store.YES);
         store.put(Fields.PARTIAL_MATCH_NAME, Field.Store.NO);
@@ -129,6 +130,7 @@ public class IndexConfig {
         Map<Fields, Field.Index> index = new HashMap();
 //        index.put(Fields.ID, Field.Index.ANALYZED_NO_NORMS);
         index.put(Fields.ID, Field.Index.ANALYZED);//need to use NORMS to be able to boost
+        index.put(Fields.EXT_ID, Field.Index.ANALYZED);
         index.put(Fields.SPECIES, Field.Index.NOT_ANALYZED_NO_NORMS);
         index.put(Fields.NAME, Field.Index.ANALYZED);
         index.put(Fields.PARTIAL_MATCH_NAME, Field.Index.ANALYZED);
@@ -147,6 +149,7 @@ public class IndexConfig {
          */
         Map<Fields, Float> boosts = new HashMap();
         boosts.put(Fields.ID, 128f);
+        boosts.put(Fields.EXT_ID, 128f);
         boosts.put(Fields.SPECIES, 1f);
         boosts.put(Fields.NAME, 64f);
         boosts.put(Fields.OTHER_NAMES, 32f);
@@ -159,6 +162,7 @@ public class IndexConfig {
 
         Map<Fields, Field.TermVector> termv = new HashMap();
         termv.put(Fields.ID, Field.TermVector.NO);
+        termv.put(Fields.EXT_ID, Field.TermVector.NO);
         termv.put(Fields.SPECIES, Field.TermVector.NO);
         termv.put(Fields.NAME, Field.TermVector.NO);
         termv.put(Fields.PARTIAL_MATCH_NAME, Field.TermVector.NO);

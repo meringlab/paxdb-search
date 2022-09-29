@@ -116,6 +116,7 @@ public class ProteinSearcher implements Searcher {
                     String highlightedSnippet = getHighlightedSnippet(query, q, docId, document);
 
                     results.add(new ProteinHit(Long.valueOf(document.get(Fields.ID.toString())),
+                            document.get(Fields.EXT_ID.toString()),
                             document.get(Fields.NAME.toString()),
                             document.get(Fields.ANNOTATION.toString()),
                             hits[i].score,

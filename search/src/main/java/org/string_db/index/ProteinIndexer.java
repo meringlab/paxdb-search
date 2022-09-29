@@ -88,7 +88,7 @@ public class ProteinIndexer {
         Document doc = new Document();
         try {
             doc.add(conf.makeField(IndexConfig.Fields.ID, String.valueOf(id)));
-            doc.add(conf.makeField(IndexConfig.Fields.ID, extId));
+            doc.add(conf.makeField(IndexConfig.Fields.EXT_ID, extId));
             doc.add(conf.makeField(IndexConfig.Fields.NAME, preferredName));
             doc.add(conf.makeField(IndexConfig.Fields.PARTIAL_MATCH_NAME, preferredName));
             doc.add(conf.makeField(IndexConfig.Fields.SPECIES, speciesId.toString()));

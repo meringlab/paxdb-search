@@ -30,11 +30,11 @@ public class SearchResourceRepositoryTest {
     public void test_search() throws Exception {
         context.checking(new Expectations() {{
             one(searcher).search(Arrays.asList("dehydrogenase"), null, 1, 10);
-            will(returnValue(Arrays.asList(new SearchResult("dehydrogenase",
-                    Arrays.asList(new ProteinHit(407237L, 1.0f, "<b>dehydrogenase</b>")), 1, 1, 10))));
+            will(returnValue(Arrays.asList(new SearchResult("EDP09989",
+                    Arrays.asList(new ProteinHit(407237L, "3055.EDP09989" , 1.0f, "<b>EDP09989</b>")), 1, 1, 10))));
         }});
 
-        final SearchResponse res = (SearchResponse) repository.search("dehydrogenase", null, 1, 10);
+        final SearchResponse res = (SearchResponse) repository.search("EDP09989", null, 1, 10);
         assertEquals("407237", res.getResults().get(0).getHits().get(0).getProteinId());
     }
 }

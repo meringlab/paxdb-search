@@ -7,6 +7,7 @@ package org.string_db.search;
  */
 public class ProteinHit {
     private Long id;
+    private String ext_id;
     private String name;
     private String annotation;
     private Float score;
@@ -16,22 +17,25 @@ public class ProteinHit {
     public ProteinHit() {
     }
 
-    public ProteinHit(Long proteinId, Float score, String highlighted) {
+    public ProteinHit(Long proteinId, String ext_id, Float score, String highlighted) {
         this.id = proteinId;
+        this.ext_id = ext_id;
         this.score = score;
         this.highlighted = highlighted;
     }
 
-    public ProteinHit(Long id, String name, String annotation, Float score, String highlighted) {
+    public ProteinHit(Long id, String ext_id, String name, String annotation, Float score, String highlighted) {
         this.id = id;
+        this.ext_id = ext_id;
         this.name = name;
         this.annotation = annotation;
         this.score = score;
         this.highlighted = highlighted;
     }
 
-    public ProteinHit(Long id, String name, String annotation, Float score, String highlighted, String speciesId) {
+    public ProteinHit(Long id, String ext_id, String name, String annotation, Float score, String highlighted, String speciesId) {
         this.id = id;
+        this.ext_id = ext_id;
         this.name = name;
         this.annotation = annotation;
         this.score = score;
@@ -46,7 +50,15 @@ public class ProteinHit {
     public void setId(Long proteinId) {
         this.id = proteinId;
     }
+    
+    public String getExtId() {
+        return ext_id;
+    }
 
+    public void setExtId(String ext_id) {
+        this.ext_id = ext_id;
+    }
+    
     public Float getScore() {
         return score;
     }
