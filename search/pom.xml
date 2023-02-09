@@ -3,9 +3,9 @@
     <parent>
         <artifactId>api-search</artifactId>
         <groupId>org.pax-db</groupId>
-        <version>5.0.0</version>
+        <version>5.0.1</version>
     </parent>
-    <version>5.0.0</version>
+    <version>5.0.1</version>
     <groupId>org.pax-db.api</groupId>
     <artifactId>search</artifactId>
     <modelVersion>4.0.0</modelVersion>

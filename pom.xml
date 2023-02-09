@@ -4,7 +4,7 @@
     <groupId>org.pax-db</groupId>
     <artifactId>api-search</artifactId>
     <packaging>pom</packaging>
-    <version>5.0.0</version>
+    <version>5.0.1</version>
     <name>paxdb search api service</name>
     <url>http://pax-db.org</url>
     <organization>
